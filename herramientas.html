@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acá hablo sobre las herramientas mencionadas con anterioridad</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f093fb;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --text-light: #718096;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7fafc;
+            --bg-card: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: var(--gradient);
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .header p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Filter Buttons */
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: var(--shadow);
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Categories Grid */
+        .categories-grid {
+            display: grid;
+            gap: 2rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .category {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .category:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .tool-card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary-color);
+            background: var(--bg-card);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .tool-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tool-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .tool-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .skill-level {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .level-experto {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+        }
+
+        .level-solido {
+            background: linear-gradient(135deg, #4299e1, #3182ce);
+            color: white;
+        }
+
+        .level-bueno {
+            background: linear-gradient(135deg, #ed8936, #dd6b20);
+            color: white;
+        }
+
+        .level-intermedio {
+            background: linear-gradient(135deg, #ecc94b, #d69e2e);
+            color: white;
+        }
+
+        .level-basico {
+            background: linear-gradient(135deg, #a0aec0, #718096);
+            color: white;
+        }
+
+        .level-aprendiendo {
+            background: linear-gradient(135deg, #9f7aea, #805ad5);
+            color: white;
+        }
+
+        .level-nativo {
+            background: linear-gradient(135deg, #38b2ac, #319795);
+            color: white;
+        }
+
+        .level-desarrollo {
+            background: linear-gradient(135deg, #f56565, #e53e3e);
+            color: white;
+        }
+
+        .tool-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .tool-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: color 0.3s ease;
+        }
+
+        .tool-link:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 3rem 0;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            .category {
+                padding: 1.5rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-container {
+                gap: 0.25rem;
+            }
+            
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+/*COPIA Y PEGA PRUEBA */
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1><i class="fas fa-toolbox"></i> Acá hablo sobre las herramientas mencionadas con anterioridad</h1>
+            <p>Estas son las herramientas que uso día a día para crear, automatizar y gestionar proyectos.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Filter Buttons -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">Todas las Herramientas</button>
+            <button class="filter-btn" data-filter="automatizacion">Automatización</button>
+            <button class="filter-btn" data-filter="gestion">Gestión</button>
+            <button class="filter-btn" data-filter="desarrollo">Desarrollo</button>
+            <button class="filter-btn" data-filter="backend">Backend</button>
+            <button class="filter-btn" data-filter="ia">Inteligencia Artificial</button>
+            <button class="filter-btn" data-filter="datos">Datos</button>
+            <button class="filter-btn" data-filter="idiomas">Idiomas</button>
+            <button class="filter-btn" data-filter="educacion">Educación</button>
+        </div>
+
+        <!-- Categories Grid -->
+        <div class="categories-grid">
+            <!-- Automatización y Procesos -->
+            <div class="category fade-in" data-category="automatizacion">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h2 class="category-title">Automatización y Procesos</h2>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="n8n">
+                        <div class="tool-header">
+                            <h3 class="tool-name">n8n</h3>
+                            <span class="skill-level level-solido">Sólido</span>
+                        </div>
+                        <p class="tool-description">Creación de flujos automatizados visuales y potentes para conectar diferentes servicios.</p>
+                        <a href="https://docs.n8n.io/" class="tool-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            Documentación oficial
+                        </a>
+                    </div>
+                    <div class="tool-card" data-tool="make">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Make (Ex Integromat)</h3>
+                            <span class="skill-level level-bueno">Bueno</span>
+                        </div>
+                        <p class="tool-description">Automatización visual de tareas complejas con una interfaz intuitiva.</p>
+                        <a href="https://www.make.com/en/help" class="tool-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            Documentación oficial
+                        </a>
+                    </div>
+                    <div class="tool-card" data-tool="ifttt">
+                        <div class="tool-header">
+                            <h3 class="tool-name">IFTTT</h3>
+                            <span class="skill-level level-bueno">Bueno</span>
+                        </div>
+                        <p class="tool-description">Conexión simple de apps y servicios mediante triggers y acciones.</p>
+                        <a href="https://ifttt.com/" class="tool-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            Documentación oficial
+                        </a>
+                    </div>
+                    <div class="tool-card" data-tool="google-sheets-auto">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Google Sheets</h3>
+                            <span class="skill-level level-intermedio">Intermedio</span>
+                        </div>
+                        <p class="tool-description">Consolidación y procesamiento automatizado de datos empresariales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gestión de Proyectos -->
+            <div class="category fade-in" data-category="gestion">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h2 class="category-title">Gestión de Proyectos</h2>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="trello">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Trello</h3>
+                            <span class="skill-level level-bueno">Bueno</span>
+                        </div>
+                        <p class="tool-description">Organización Kanban para gestión visual de proyectos y tareas.</p>
+                    </div>
+                    <div class="tool-card" data-tool="notion">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Notion</h3>
+                            <span class="skill-level level-bueno">Bueno</span>
+                        </div>
+                        <p class="tool-description">Sistema de conocimiento digital todo-en-uno para documentación y gestión.</p>
+                    </div>
+                    <div class="tool-card" data-tool="google-workspace">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Google Workspace</h3>
+                            <span class="skill-level level-intermedio">Intermedio</span>
+                        </div>
+                        <p class="tool-description">Herramientas colaborativas para trabajo en equipo y productividad.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desarrollo Web -->
+            <div class="category fade-in" data-category="desarrollo">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h2 class="category-title">Desarrollo Web</h2>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="html">
+                        <div class="tool-header">
+                            <h3 class="tool-name">HTML</h3>
+                            <span class="skill-level level-bueno">Bueno</span>
+                        </div>
+                        <p class="tool-description">Estructura semántica y accesible para sitios web modernos.</p>
+                    </div>
+                    <div class="tool-card" data-tool="css">
+                        <div class="tool-header">
+                            <h3 class="tool-name">CSS</h3>
+                            <span class="skill-level level-bueno">Bueno</span>
+                        </div>
+                        <p class="tool-description">Diseño responsive y animaciones para experiencias visuales atractivas.</p>
+                    </div>
+                    <div class="tool-card" data-tool="javascript">
+                        <div class="tool-header">
+                            <h3 class="tool-name">JavaScript</h3>
+                            <span class="skill-level level-desarrollo">En desarrollo</span>
+                        </div>
+                        <p class="tool-description">Interactividad dinámica y funcionalidades avanzadas del lado cliente.</p>
+                    </div>
+                    <div class="tool-card" data-tool="responsive">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Responsive Design</h3>
+                            <span class="skill-level level-bueno">Bueno</span>
+                        </div>
+                        <p class="tool-description">Adaptación fluida a diferentes dispositivos y tamaños de pantalla.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backend Básico -->
+            <div class="category fade-in" data-category="backend">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h2 class="category-title">Backend Básico</h2>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="nodejs">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Node.js</h3>
+                            <span class="skill-level level-aprendiendo">Aprendiendo</span>
+                        </div>
+                        <p class="tool-description">Desarrollo de servidores y APIs escalables con JavaScript.</p>
+                    </div>
+                    <div class="tool-card" data-tool="mongodb">
+                        <div class="tool-header">
+                            <h3 class="tool-name">MongoDB</h3>
+                            <span class="skill-level level-basico">Básico</span>
+                        </div>
+                        <p class="tool-description">Gestión de bases de datos NoSQL flexibles y escalables.</p>
+                    </div>
+                    <div class="tool-card" data-tool="apis-rest">
+                        <div class="tool-header">
+                            <h3 class="tool-name">APIs REST</h3>
+                            <span class="skill-level level-basico">Básico</span>
+                        </div>
+                        <p class="tool-description">Consumo y creación de endpoints para comunicación entre servicios.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inteligencia Artificial -->
+            <div class="category fade-in" data-category="ia">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h2 class="category-title">Inteligencia Artificial</h2>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="chatgpt">
+                        <div class="tool-header">
+                            <h3 class="tool-name">ChatGPT</h3>
+                            <span class="skill-level level-experto">Experto</span>
+                        </div>
+                        <p class="tool-description">Resolución de problemas complejos y generación de contenido avanzado.</p>
+                    </div>
+                    <div class="tool-card" data-tool="claude">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Claude</h3>
+                            <span class="skill-level level-experto">Experto</span>
+                        </div>
+                        <p class="tool-description">Análisis de documentos profundo y razonamiento lógico avanzado.</p>
+                    </div>
+                    <div class="tool-card" data-tool="gemini">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Gemini</h3>
+                            <span class="skill-level level-intermedio">Intermedio</span>
+                        </div>
+                        <p class="tool-description">Exploración de IA avanzada y procesamiento multimodal.</p>
+                    </div>
+                    <div class="tool-card" data-tool="deepseek">
+                        <div class="tool-header">
+                            <h3 class="tool-name">DeepSeek</h3>
+                            <span class="skill-level level-intermedio">Intermedio</span>
+                        </div>
+                        <p class="tool-description">Búsqueda y análisis inteligente de información compleja.</p>
+                    </div>
+                    <div class="tool-card" data-tool="prompt-engineering">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Prompt Engineering</h3>
+                            <span class="skill-level level-solido">Sólido</span>
+                        </div>
+                        <p class="tool-description">Diseño de prompts eficientes para obtener resultados precisos.</p>
+                    </div>
+                    <div class="tool-card" data-tool="chain-of-thought">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Chain-of-Thought</h3>
+                            <span class="skill-level level-intermedio">Intermedio</span>
+                        </div>
+                        <p class="tool-description">Técnica de razonamiento paso a paso para problemas complejos.</p>
+                    </div>
+                    <div class="tool-card" data-tool="few-shot">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Few-Shot Learning</h3>
+                            <span class="skill-level level-intermedio">Intermedio</span>
+                        </div>
+                        <p class="tool-description">Optimización de resultados mediante ejemplos estratégicos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Organización y Datos -->
+            <div class="category fade-in" data-category="datos">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h2 class="category-title">Organización y Datos</h2>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="google-sheets-data">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Google Sheets</h3>
+                            <span class="skill-level level-solido">Sólido</span>
+                        </div>
+                        <p class="tool-description">Fórmulas avanzadas y automatización para análisis de datos.</p>
+                    </div>
+                    <div class="tool-card" data-tool="excel">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Excel</h3>
+                            <span class="skill-level level-intermedio">Intermedio</span>
+                        </div>
+                        <p class="tool-description">Manejo de datos complejos y cálculos empresariales.</p>
+                    </div>
+                    <div class="tool-card" data-tool="data-viz">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Data Visualization</h3>
+                            <span class="skill-level level-intermedio">Intermedio</span>
+                        </div>
+                        <p class="tool-description">Representación gráfica clara e impactante de información.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Idiomas -->
+            <div class="category fade-in" data-category="idiomas">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h2 class="category-title">Idiomas</h2>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="espanol">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Español</h3>
+                            <span class="skill-level level-nativo">Nativo</span>
+                        </div>
+                        <p class="tool-description">Dominio completo del idioma materno para comunicación profesional.</p>
+                    </div>
+                    <div class="tool-card" data-tool="ingles">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Inglés</h3>
+                            <span class="skill-level level-basico">Básico</span>
+                        </div>
+                        <p class="tool-description">Comprensión lectora y comunicación funcional para documentación técnica.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Educación y Aprendizaje -->
+            <div class="category fade-in" data-category="educacion">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h2 class="category-title">Educación y Aprendizaje</h2>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="bachiller">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Bachiller en Ciencias Sociales</h3>
+                            <span class="skill-level level-solido">Completado</span>
+                        </div>
+                        <p class="tool-description">Formación académica integral (2019-2024) con enfoque en ciencias sociales.</p>
+                    </div>
+                    <div class="tool-card" data-tool="denver">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Denver English Institute</h3>
+                            <span class="skill-level level-bueno">Completado</span>
+                        </div>
+                        <p class="tool-description">Curso de inglés especializado (2019-2021) para competencias lingüísticas.</p>
+                    </div>
+                    <div class="tool-card" data-tool="autodidacta">
+                        <div class="tool-header">
+                            <h3 class="tool-name">Aprendizaje Autodidacta</h3>
+                            <span class="skill-level level-experto">Continuo</span>
+                        </div>
+                        <p class="tool-description">Desarrollo web, automatización y tecnologías emergentes de forma autónoma.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="toolModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle"></h3>
+                <button class="close-btn" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="modalBody">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="index.html" class="footer-link">Volver a página anterior</a>
+            <div class="footer-social">
+                <a href="https://github.com/Fink-web" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub de Ariel Fink">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+                <a href="https://linkedin.com/in/ariel-fink" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn de Ariel Fink">
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+                <a href="#" onclick="enviarCorreoFooter(event)" class="footer-social-link" aria-label="Enviar email a Ariel Fink">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                </a>
+            </div>
+            <p class="footer-copyright">© 2025 Ariel Alejandro Fink. Todos los derechos reservados.</p>
+        </div>    
+    </footer>
+
+    <script>
+        // Tool details data
+        const toolDetails = {
+            'n8n': {
+                title: 'n8n - Automatización Visual',
+                content: `
+                    <p><strong>Nivel:</strong> Sólido</p>
+                    <p><strong>Uso principal:</strong> Creación de flujos de trabajo automatizados complejos</p>
+                    <h4>Casos de uso que domino:</h4>
+                    <ul>
+                        <li>Integración de APIs y servicios web</li>
+                        <li>Automatización de procesos de marketing</li>
+                        <li>Sincronización de datos entre plataformas</li>
+                        <li>Notificaciones automatizadas</li>
+                        <li>Procesamiento de formularios web</li>
+                    </ul>
+                    <p><strong>Experiencia:</strong> He creado más de 50 workflows diferentes, desde simples notificaciones hasta procesos complejos de múltiples pasos.</p>
+                `
+            },
+            'make': {
+                title: 'Make (Ex Integromat)',
+                content: `
+                    <p><strong>Nivel:</strong> Bueno</p>
+                    <p><strong>Uso principal:</strong> Automatización visual de tareas empresariales</p>
+                    <h4>Funcionalidades que manejo:</h4>
+                    <ul>
+                        <li>Conexión de apps SaaS populares</li>
+                        <li>Transformación de datos en tiempo real</li>
+                        <li>Automatización de redes sociales</li>
+                        <li>Gestión de leads automatizada</li>
+                    </ul>
+                    <p><strong>Ventaja:</strong> Excelente para usuarios no técnicos que necesitan automatizaciones robustas.</p>
+                `
+            },
+            'chatgpt': {
+                title: 'ChatGPT - IA Conversacional',
+                content: `
+                    <p><strong>Nivel:</strong> Experto</p>
+                    <p><strong>Uso principal:</strong> Resolución de problemas complejos y generación de contenido</p>
+                    <h4>Técnicas avanzadas que aplico:</h4>
+                    <ul>
+                        <li>Prompt engineering para resultados precisos</li>
+                        <li>Chain-of-thought para razonamiento complejo</li>
+                        <li>Few-shot learning para tareas específicas</li>
+                        <li>Generación de código y debugging</li>
+                        <li>Análisis y síntesis de información</li>
+                    </ul>
+                    <p><strong>Experiencia:</strong> Más de 2 años usando IA para optimizar workflows y resolver problemas técnicos complejos.</p>
+                `
+            },
+            'claude': {
+                title: 'Claude - IA de Análisis',
+                content: `
+                    <p><strong>Nivel:</strong> Experto</p>
+                    <p><strong>Uso principal:</strong> Análisis profundo de documentos y razonamiento lógico</p>
+                    <h4>Casos de uso especializados:</h4>
+                    <ul>
+                        <li>Análisis de documentos largos y complejos</li>
+                        <li>Revisión y mejora de código</li>
+                        <li>Investigación y síntesis de información</li>
+                        <li>Razonamiento ético y crítico</li>
+                        <li>Generación de contenido técnico detallado</li>
+                    </ul>
+                    <p><strong>Fortaleza:</strong> Excelente para tareas que requieren precisión y razonamiento cuidadoso.</p>
+                `
+            },
+            'javascript': {
+                title: 'JavaScript - Desarrollo Frontend',
+                content: `
+                    <p><strong>Nivel:</strong> En desarrollo</p>
+                    <p><strong>Enfoque actual:</strong> Interactividad y manipulación del DOM</p>
+                    <h4>Conceptos que estoy dominando:</h4>
+                    <ul>
+                        <li>Manipulación del DOM y eventos</li>
+                        <li>Fetch API y comunicación con servicios</li>
+                        <li>Programación asíncrona (Promises, async/await)</li>
+                        <li>Módulos ES6 y sintaxis moderna</li>
+                        <li>Animaciones y transiciones dinámicas</li>
+                    </ul>
+                    <p><strong>Proyectos:</strong> Desarrollo de interfaces interactivas y componentes reutilizables.</p>
+                `
+            },
+            'nodejs': {
+                title: 'Node.js - Backend JavaScript',
+                content: `
+                    <p><strong>Nivel:</strong> Aprendiendo</p>
+                    <p><strong>Enfoque:</strong> Desarrollo de APIs y servidores escalables</p>
+                    <h4>Áreas de estudio:</h4>
+                    <ul>
+                        <li>Express.js para APIs REST</li>
+                        <li>Middleware y autenticación</li>
+                        <li>Conexión con bases de datos</li>
+                        <li>Manejo de archivos y streams</li>
+                        <li>Deployment y escalabilidad</li>
+                    </ul>
+                    <p><strong>Objetivo:</strong> Crear aplicaciones full-stack completas con JavaScript.</p>
+                `
+            },
+            'notion': {
+                title: 'Notion - Sistema de Conocimiento',
+                content: `
+                    <p><strong>Nivel:</strong> Bueno</p>
+                    <p><strong>Uso principal:</strong> Organización de proyectos y documentación</p>
+                    <h4>Sistemas que he implementado:</h4>
+                    <ul>
+                        <li>Base de datos de proyectos con automatizaciones</li>
+                        <li>Sistema de seguimiento de aprendizaje</li>
+                        <li>Documentación técnica estructurada</li>
+                        <li>Templates para workflows recurrentes</li>
+                        <li>Dashboard personal de productividad</li>
+                    </ul>
+                    <p><strong>Ventaja:</strong> Perfecto para centralizar información y crear sistemas personalizados.</p>
+                `
+            }
+        };
+
+        // DOM elements
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const categories = document.querySelectorAll('.category');
+        const toolCards = document.querySelectorAll('.tool-card');
+        const modal = document.getElementById('toolModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+
+        // Filter functionality
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                categories.forEach(category => {
+                    if (filter === 'all' || category.getAttribute('data-category') === filter) {
+                        category.style.display = 'block';
+                        // Animate in
+                        setTimeout(() => {
+                            category.style.opacity = '1';
+                            category.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        // Animate out
+                        category.style.opacity = '0';
+                        category.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            category.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Tool card click functionality
+        toolCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Don't open modal if clicking on a link
+                if (e.target.tagName === 'A' || e.target.closest('a')) {
+                    return;
+                }
+                
+                const toolKey = card.getAttribute('data-tool');
+                const toolData = toolDetails[toolKey];
+                
+                if (toolData) {
+                    modalTitle.textContent = toolData.title;
+                    modalBody.innerHTML = toolData.content;
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    // Default modal content for tools without detailed info
+                    const toolName = card.querySelector('.tool-name').textContent;
+                    const skillLevel = card.querySelector('.skill-level').textContent;
+                    const description = card.querySelector('.tool-description').textContent;
+                    
+                    modalTitle.textContent = toolName;
+                    modalBody.innerHTML = `
+                        <p><strong>Nivel:</strong> ${skillLevel}</p>
+                        <p><strong>Descripción:</strong> ${description}</p>
+                        <p>Esta herramienta forma parte de mi stack tecnológico y la utilizo regularmente en mis proyectos.</p>
+                    `;
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+
+            // Add hover effect
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Close modal functionality
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                closeModal();
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add smooth scrolling behavior
+        document.documentElement.style.scrollBehavior = 'smooth';
+
+        // Add loading states for external links
+        document.querySelectorAll('.tool-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const icon = this.querySelector('i');
+                const originalClass = icon.className;
+                
+                // Show loading spinner
+                icon.className = 'fas fa-spinner fa-spin';
+                
+                // Reset after 2 seconds (in case the link opens in same tab)
+                setTimeout(() => {
+                    icon.className = originalClass;
+                }, 2000);
+            });
+        });
+
+        // Add particle background effect to header (optional)
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.width = '2px';
+            particle.style.height = '2px';
+            particle.style.background = 'rgba(255, 255, 255, 0.5)';
+            particle.style.borderRadius = '50%';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = '100%';
+            particle.style.pointerEvents = 'none';
+            particle.style.animation = 'float 3s linear infinite';
+            
+            document.querySelector('.header').appendChild(particle);
+            
+            // Remove particle after animation
+            setTimeout(() => {
+                particle.remove();
+            }, 3000);
+        }
+
+        // Add CSS for floating particles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Create particles periodically
+        setInterval(createParticle, 500);
+
+        // Add search functionality
+        const searchInput = document.createElement('input');
+        searchInput.type = 'text';
+        searchInput.placeholder = 'Buscar herramientas...';
+        searchInput.style.cssText = `
+            width: 100%;
+            max-width: 400px;
+            padding: 1rem 1.5rem;
+            margin: 0 auto 2rem;
+            display: block;
+            border: 2px solid var(--bg-secondary);
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            box-shadow: var(--shadow);
+        `;
+
+        searchInput.addEventListener('focus', function() {
+            this.style.borderColor = 'var(--primary-color)';
+            this.style.boxShadow = '0 0 0 3px rgba(102, 126, 234, 0.1)';
+        });
+
+        searchInput.addEventListener('blur', function() {
+            this.style.borderColor = 'var(--bg-secondary)';
+            this.style.boxShadow = 'var(--shadow)';
+        });
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            toolCards.forEach(card => {
+                const toolName = card.querySelector('.tool-name').textContent.toLowerCase();
+                const toolDesc = card.querySelector('.tool-description').textContent.toLowerCase();
+                const isMatch = toolName.includes(searchTerm) || toolDesc.includes(searchTerm);
+                
+                card.style.display = isMatch ? 'block' : 'none';
+            });
+
+            // Hide empty categories
+            categories.forEach(category => {
+                const visibleCards = category.querySelectorAll('.tool-card[style*="display: block"], .tool-card:not([style*="display: none"])');
+                category.style.display = visibleCards.length > 0 ? 'block' : 'none';
+            });
+        });
+
+        // Insert search input after filter buttons
+        document.querySelector('.filter-container').insertAdjacentElement('afterend', searchInput);
+/* PRUEBA */
+// ===== FUNCIONES DE VALIDACIÓN DE EMAIL (NUEVAS) =====
+
+// Función para validar formato de email más estricta
+function validarEmailEstructura(email) {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+}
+
+// Función para verificar dominios comunes válidos
+function esDominioValido(email) {
+    const dominiosComunes = [
+        'gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'live.com',
+        'aol.com', 'icloud.com', 'protonmail.com', 'tutanota.com',
+        'company.com', 'organization.org', 'university.edu',
+        // Dominios argentinos
+        'fibertel.com.ar', 'arnet.com.ar', 'speedy.com.ar', 'ciudad.com.ar',
+        // Dominios corporativos comunes
+        'microsoft.com', 'google.com', 'apple.com', 'amazon.com'
+    ];
+    
+    const domain = email.toLowerCase().split('@')[1];
+    
+    // Verificar si es un dominio común
+    if (dominiosComunes.includes(domain)) {
+        return true;
+    }
+    
+    // Verificar si parece un dominio real (tiene al menos un punto y extensión válida)
+    const domainParts = domain.split('.');
+    const validExtensions = ['com', 'org', 'net', 'edu', 'gov', 'mil', 'int', 'ar', 'es', 'mx', 'co', 'cl', 'pe'];
+    
+    return domainParts.length >= 2 && 
+           validExtensions.includes(domainParts[domainParts.length - 1]) &&
+           domainParts[0].length > 1;
+}
+
+// Función para detectar emails obviamente falsos
+function esEmailSospechoso(email) {
+    const patronesSospechosos = [
+        /test@/i,
+        /fake@/i,
+        /noemail@/i,
+        /example@/i,
+        /demo@/i,
+        /prueba@/i,
+        /falso@/i,
+        /@test\./i,
+        /@fake\./i,
+        /@example\./i,
+        /123@/i,
+        /abc@/i,
+        /@123\./i,
+        /@abc\./i
+    ];
+    
+    return patronesSospechosos.some(patron => patron.test(email));
+}
+
+// Función de validación completa
+function validarEmailCompleto(email) {
+    if (!email) {
+        return { valido: false, mensaje: 'El email es requerido' };
+    }
+    
+    if (!validarEmailEstructura(email)) {
+        return { valido: false, mensaje: 'El formato del email no es válido' };
+    }
+    
+    if (esEmailSospechoso(email)) {
+        return { valido: false, mensaje: 'Por favor, usa tu email real para poder contactarte' };
+    }
+    
+    if (!esDominioValido(email)) {
+        return { valido: false, mensaje: 'El dominio del email parece no ser válido' };
+    }
+    
+    return { valido: true, mensaje: 'Email válido' };
+}
+
+// ===== FIN FUNCIONES DE VALIDACIÓN =====
+
+// ===== FUNCIONES DE EMAIL CORREGIDAS =====
+
+// Función para detectar proveedor de correo preferido
+function detectarProveedorCorreo() {
+    // 1. Detectar por dominio del email ingresado
+    const emailInput = document.getElementById('email');
+    if (emailInput && emailInput.value) {
+        const emailDomain = emailInput.value.toLowerCase().split('@')[1];
+        
+        if (emailDomain) {
+            if (emailDomain.includes('gmail')) return 'gmail';
+            if (emailDomain.includes('outlook') || emailDomain.includes('hotmail') || emailDomain.includes('live')) return 'outlook';
+            if (emailDomain.includes('yahoo')) return 'yahoo';
+        }
+    }
+    
+    // 2. Por defecto Gmail (más popular)
+    return 'gmail';
+}
+
+// Función para abrir el proveedor específico
+function abrirProveedorCorreo(proveedor, destinatario, asunto, cuerpo) {
+    const urls = {
+        gmail: `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(destinatario)}&su=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`,
+        outlook: `https://outlook.live.com/mail/0/deeplink/compose?to=${encodeURIComponent(destinatario)}&subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`,
+        yahoo: `https://compose.mail.yahoo.com/?to=${encodeURIComponent(destinatario)}&subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`
+    };
+    
+    const url = urls[proveedor] || urls.gmail;
+    console.log(`Abriendo ${proveedor}:`, url); // Debug
+    window.open(url, '_blank');
+}
+
+// Función para mostrar selector de proveedor
+function mostrarSelectorProveedor(destinatario, asunto, cuerpo) {
+    const providers = [
+        { id: 'gmail', name: 'Gmail', icon: '📧' },
+        { id: 'outlook', name: 'Outlook', icon: '📮' },
+        { id: 'yahoo', name: 'Yahoo Mail', icon: '📪' },
+        { id: 'mailto', name: 'Cliente predeterminado', icon: '✉️' }
+    ];
+    
+    let options = providers.map((p, index) => `${index + 1}. ${p.icon} ${p.name}`).join('\n');
+    
+    const choice = prompt(`Selecciona tu proveedor de correo:\n\n${options}\n\nEscribe el número (1-4):`);
+    
+    if (!choice) return;
+    
+    const choiceNum = parseInt(choice);
+    
+    if (choiceNum === 1) {
+        abrirProveedorCorreo('gmail', destinatario, asunto, cuerpo);
+    } else if (choiceNum === 2) {
+        abrirProveedorCorreo('outlook', destinatario, asunto, cuerpo);
+    } else if (choiceNum === 3) {
+        abrirProveedorCorreo('yahoo', destinatario, asunto, cuerpo);
+    } else if (choiceNum === 4) {
+        const mailtoUrl = `mailto:${destinatario}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+        window.location.href = mailtoUrl;
+    } else {
+        // Por defecto Gmail si la opción no es válida
+        abrirProveedorCorreo('gmail', destinatario, asunto, cuerpo);
+    }
+}
+
+// Función híbrida mejorada para envío de correo
+function enviarCorreoInteligente(destinatario, asunto, cuerpo, mostrarSelector = false) {
+    console.log('Enviando correo con:', { destinatario, asunto, mostrarSelector }); // Debug
+    
+    if (esMobile()) {
+        // En móviles usa mailto (más confiable)
+        const mailtoUrl = `mailto:${destinatario}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+        console.log('Móvil detectado, usando mailto:', mailtoUrl); // Debug
+        window.location.href = mailtoUrl;
+    } else {
+        // En escritorio detectar proveedor preferido
+        if (mostrarSelector) {
+            console.log('Mostrando selector de proveedor'); // Debug
+            mostrarSelectorProveedor(destinatario, asunto, cuerpo);
+        } else {
+            const proveedorPreferido = detectarProveedorCorreo();
+            console.log('Proveedor detectado:', proveedorPreferido); // Debug
+            abrirProveedorCorreo(proveedorPreferido, destinatario, asunto, cuerpo);
+        }
+    }
+}
+
+
+    </script>
+</body>
+</html>
