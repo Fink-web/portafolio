@@ -343,29 +343,254 @@ function validarEmailCompleto(email) {
 
 ---
 
-## 🤝 **Contribuir al Proyecto**
+## Preguntas Frecuentes
 
-### **Para v1.0 (Actual)**
-```bash
-# Issues bienvenidos para:
-✅ Bugs y mejoras de UX
-✅ Optimizaciones de performance  
-✅ Mejoras de accesibilidad
-✅ Compatibilidad cross-browser
+### **Sobre el Desarrollo Actual**
 
-# No se aceptan:
-❌ Cambios estructurales grandes
-❌ Nuevas dependencias pesadas
-❌ Cambios que rompan la estabilidad
+#### **¿Por qué HTML/CSS/JS vanilla en lugar de frameworks modernos?**
+**Decisión práctica para v1.0:**
+- **Simplicidad**: Fácil de mantener y entender sin capas de abstracción
+- **Compatibilidad**: Funciona en prácticamente cualquier navegador
+- **Performance**: Carga rápida sin dependencias externas
+- **Aprendizaje**: Permite dominar los fundamentos antes de usar frameworks
+
+#### **¿Cómo funciona el sistema de detección de proveedores de correo?**
+```javascript
+// El sistema analiza el dominio del email ingresado
+function detectarProveedorCorreo() {
+    const emailDomain = email.split('@')[1];
+    
+    if (emailDomain.includes('gmail')) return 'gmail';
+    if (emailDomain.includes('outlook')) return 'outlook';
+    if (emailDomain.includes('yahoo')) return 'yahoo';
+    
+    return 'gmail'; // Default más común
+}
+```
+Esto permite abrir automáticamente Gmail, Outlook Web o Yahoo Mail según el email del usuario.
+
+#### **¿Realmente es responsive?**
+**Sí, probado en varios dispositivos:**
+- **Breakpoints principales**: 320px, 768px, 1024px y superiores
+- **Dispositivos móviles**: iPhone, Android de diferentes tamaños
+- **Touch gestures**: Slider de proyectos funciona con swipe
+- **Viewport optimizado**: Usa meta viewport y unidades flexibles
+
+#### **¿Por qué Formspree para el formulario?**
+- **Sin backend**: No necesito mantener un servidor propio
+- **Fácil implementación**: Setup rápido y directo
+- **Fallback incluido**: Si falla, redirige a email directo
+- **Gratuito**: Suficiente para las necesidades de un portafolio
+
+### **Sobre la Migración a Next.js (v2.0)**
+
+#### **¿Qué incluirá la migración progresiva?**
+**Stack tecnológico planeado:**
+```typescript
+// Tecnologías que planeo aprender e implementar
+Next.js 14          // Framework React moderno
+TypeScript          // Para tipado y mejor código
+Tailwind CSS        // CSS utility-first
+Framer Motion       // Animaciones (a explorar)
 ```
 
-### **Para v2.0 (Futuro)**
+**Características que me gustaría agregar (progresivamente):**
+- **Hero mejorado**: Efecto typewriter más avanzado y partículas
+- **Animaciones**: Transiciones más suaves entre secciones
+- **Theme switcher**: Modo oscuro/claro
+- **Blog**: Sección para compartir aprendizajes técnicos
+- **PWA básica**: Capacidades offline simples
+- **Multiidioma**: Español e inglés
+
+#### **¿Por qué migrar si la versión actual funciona?**
+**Razones de aprendizaje:**
+
+**Desarrollo personal:**
+- **Práctica con herramientas modernas**: Next.js está muy demandado
+- **Portfolio actualizado**: Muestra evolución técnica
+- **Nuevas habilidades**: TypeScript, React, herramientas del ecosistema
+
+**Mejoras técnicas:**
+- **Performance**: Optimizaciones automáticas de Next.js
+- **SEO**: Mejor indexación con SSR
+- **Mantenimiento**: Componentes reutilizables
+- **Escalabilidad**: Más fácil agregar funcionalidades
+
+#### **¿Cuándo estará lista la v2.0?**
+**Timeline tentativo (sujeto a cambios):**
+```
+Q1 2025: Aprendizaje de Next.js + Setup inicial
+Q2 2025: Migración básica + primeras funcionalidades
+Q3 2025: Refinamiento + características adicionales
+```
+
+**Factores que pueden afectar:**
+- **Acelera**: Más tiempo disponible, feedback útil, progreso en aprendizaje
+- **Retrasa**: Complejidades técnicas, compromisos académicos/laborales, curva de aprendizaje
+
+#### **¿La v1.0 seguirá funcionando durante la migración?**
+**Por supuesto:**
+- **Sin interrupciones**: v2.0 se desarrollará en paralelo
+- **Mantenimiento básico**: v1.0 seguirá recibiendo correcciones importantes
+- **Migración opcional**: Los usuarios podrán elegir cuándo cambiar
+- **Backup garantizado**: v1.0 permanecerá como respaldo funcional
+
+## Guía de Contribución
+
+### **Reportar Bugs**
+
+#### **Antes de reportar:**
+1. **Buscar** en [Issues existentes](https://github.com/Fink-web/portafolio/issues)
+2. **Reproducir** el bug en diferentes navegadores
+3. **Verificar** que no sea un comportamiento esperado
+
+#### **Crear un Issue útil:**
+```markdown
+**Título descriptivo**: [BUG] Modal de proyectos no abre en Safari iOS
+
+**Información del sistema:**
+- OS: iOS 15.4
+- Navegador: Safari 15.4
+- Dispositivo: iPhone 12
+- Resolución: 390x844
+
+**Pasos para reproducir:**
+1. Ir a la sección Proyectos
+2. Tocar el botón "Mis Proyectos"  
+3. El modal no aparece
+
+**Comportamiento esperado:**
+El modal debería abrirse mostrando el slider de proyectos
+
+**Screenshots/Videos:**
+[Adjuntar si es posible]
+```
+
+### **Sugerir Mejoras**
+
+#### **Bienvenidas para v1.0:**
+- **UX/UI**: Mejoras de usabilidad sin cambiar estructura base
+- **Performance**: Optimizaciones de carga
+- **Accesibilidad**: Mejores prácticas básicas
+- **Compatibilidad**: Fixes para navegadores específicos
+- **Mobile**: Mejoras para dispositivos móviles
+
+#### **Para considerar en v2.0:**
+- **Nuevas secciones**: Blog, testimonios, herramientas adicionales
+- **Interacciones**: Animaciones, efectos de transición
+- **Funcionalidades**: PWA, dark mode, multiidioma
+- **Integraciones**: Analytics, APIs externas
+
+#### **No aceptadas actualmente:**
+- **Frameworks**: React, Vue u otros frameworks en v1.0
+- **Cambios mayores**: Modificar arquitectura fundamental
+- **Dependencias pesadas**: Librerías que afecten el performance
+- **Breaking changes**: Cambios que rompan funcionalidad existente
+
+### **Proceso de Desarrollo**
+
+#### **Setup:**
 ```bash
-# Colaboración en:
-✅ Diseño de componentes
-✅ Feedback sobre UX/UI
-✅ Testing de performance
-✅ Ideas para nuevas features
+# 1. Fork el repositorio en GitHub
+# 2. Clonar tu fork
+git clone https://github.com/TU-USUARIO/portafolio.git
+cd portafolio
+
+# 3. Crear rama para tu cambio
+git checkout -b feature/nombre-descriptivo
+# o para bugs
+git checkout -b fix/descripcion-del-bug
+
+# 4. Configurar upstream
+git remote add upstream https://github.com/Fink-web/portafolio.git
+```
+
+#### **Estilo de Código:**
+```javascript
+// Usar camelCase para variables y funciones
+const emailProvider = detectEmailProvider();
+const isValidEmail = validateEmailStructure(email);
+
+// Comentarios descriptivos cuando sea necesario
+// Función para detectar el proveedor de correo del usuario
+function detectarProveedorCorreo() {
+    // Extraer dominio del email
+    const domain = email.split('@')[1];
+    
+    // Verificar proveedores conocidos
+    if (domain.includes('gmail')) return 'gmail';
+    return 'gmail'; // Default
+}
+
+// Manejo básico de errores
+try {
+    const result = await sendEmail(data);
+    showSuccessMessage('Email enviado correctamente');
+} catch (error) {
+    console.error('Error al enviar email:', error);
+    showErrorMessage('Error al enviar. Inténtalo de nuevo.');
+}
+```
+
+#### **CSS Guidelines:**
+```css
+/* Variables CSS para consistencia */
+:root {
+  --primary-color: #0ea5e9;
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mobile-first approach */
+.hero-container {
+  display: block; /* Mobile por defecto */
+}
+
+@media (min-width: 768px) {
+  .hero-container {
+    display: grid; /* Desktop */
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+/* Nombres de clase descriptivos */
+.project-modal-container {
+  /* estilos */
+}
+```
+
+### **Pull Request Process**
+
+#### **Antes del PR:**
+```bash
+# Sincronizar con upstream
+git fetch upstream
+git rebase upstream/main
+
+# Verificar que funciona
+# Probar en diferentes navegadores básicos
+# Verificar que no rompe el responsive
+```
+
+#### **Descripción del PR:**
+```markdown
+## Descripción
+Breve descripción de los cambios realizados
+
+## Tipo de cambio
+- [ ] Bug fix
+- [ ] Nueva característica pequeña
+- [ ] Refactoring
+- [ ] Documentación
+- [ ] Mejora de UI/UX
+
+## Testing
+- [ ] Probado en Chrome Desktop
+- [ ] Probado en un navegador adicional
+- [ ] Probado en móvil
+- [ ] Verificado responsive básico
+
+## Screenshots
+[Si aplica, incluir antes/después]
 ```
 
 ---
@@ -413,25 +638,9 @@ document.addEventListener('click', handleClickDelegation);
 
 ---
 
-## 📄 **Licencia**
+## Licencia
 
 Este proyecto está bajo la **Licencia MIT**. Ver el archivo `LICENSE` para más detalles.
-
----
-
-## 🙏 **Agradecimientos**
-
-### **v1.0**
-- **Font Awesome** por los iconos
-- **Google Fonts** por la tipografía
-- **Formspree** por el servicio de formularios
-- **GitHub Pages** por el hosting gratuito
-
-### **v2.0 (Próximamente)**
-- **Vercel** por Next.js y el ecosistema
-- **Tailwind Labs** por Tailwind CSS
-- **Framer** por Motion library
-- **La comunidad** por feedback y sugerencias
 
 ---
 
