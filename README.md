@@ -10,61 +10,65 @@
 
 ---
 
-## 🎯 **Estado del Proyecto**
+## Estado del Proyecto
 
-### 📍 **Versión Actual (v1.0)**
+### **Versión Actual (v1.0)**
 Esta es la **versión estable en producción** del portafolio, construida con tecnologías web fundamentales para máxima compatibilidad y performance.
 
-### 🚧 **Próximo Rework (v2.0)**
-Se está planificando una **migración completa** a tecnologías modernas:
+### **Próximo Rework (v2.0)**
+Se está planificando una **migración progresiva** a tecnologías modernas:
 - **Next.js 14** con App Router
 - **TypeScript** para tipado estático
 - **Tailwind CSS** + **Framer Motion**
-- **Efectos cinematográficos** y animaciones avanzadas
+- **Efectos y animaciones** mejoradas
 
 ---
 
-## 🔗 **Links Importantes**
+## Links Importantes
 
-🌐 **Demo en Vivo**: [Ver Portafolio](https://fink-web.github.io/portafolio)  
-📄 **Página de Herramientas**: [Herramientas Detalladas](https://fink-web.github.io/portafolio/herramientas.html)  
-🔮 **Rework Planificado**: [Especificaciones v2.0](#-rework-v20---especificaciones)
-
----
-
-## 📋 **Tabla de Contenidos**
-
-- [Características Actuales](#-características-actuales)
-- [Stack Tecnológico](#️-stack-tecnológico-actual)
-- [Estructura del Proyecto](#-estructura-del-proyecto)
-- [Secciones del Portafolio](#-secciones-implementadas)
-- [Rework v2.0](#-rework-v20---especificaciones)
-- [Instalación](#-instalación-y-uso)
-- [Migración Planificada](#-roadmap-de-migración)
-- [Contacto](#-contacto)
+**Demo en Vivo**: [Ver Portafolio](https://fink-web.github.io/portafolio)  
+**Página de Herramientas**: [Herramientas Detalladas](https://fink-web.github.io/portafolio/herramientas.html)  
+**Rework Planificado**: [Especificaciones v2.0](#rework-v20---especificaciones)
 
 ---
 
-## ⭐ **Características Actuales**
+## Tabla de Contenidos
 
-### 🎨 **Diseño y UX (v1.0)**
-- **Interface Premium**: Glassmorphism y gradientes dinámicos
-- **100% Responsive**: Desde 320px hasta 4K
-- **Smooth Scrolling**: Navegación fluida con scroll spy
-- **Mobile-First**: Optimizado primero para dispositivos móviles
+- [Características Actuales](#características-actuales)
+- [Stack Tecnológico](#stack-tecnológico-actual)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Secciones del Portafolio](#secciones-implementadas)
+- [Rework v2.0](#rework-v20---especificaciones)
+- [Sección de Aprendizaje](#sección-de-aprendizaje)
+- [Setup para Desarrollo Local](#setup-para-desarrollo-local)
+- [Instalación](#instalación-y-uso)
+- [Migración Planificada](#roadmap-de-migración)
+- [Preguntas Frecuentes](#preguntas-frecuentes)
+- [Guía de Contribución](#guía-de-contribución)
+- [Contacto](#contacto)
 
-### 🔧 **Funcionalidades Implementadas**
-- ✅ **Modal de Proyectos**: Slider touch-friendly con navegación
-- ✅ **Timeline Interactiva**: Filtros por categoría y detalles expandibles
-- ✅ **Validación Avanzada**: Sistema inteligente de validación de emails
-- ✅ **Envío Inteligente**: Detección automática del proveedor de correo
-- ✅ **Página de Herramientas**: Vista detallada de todas las competencias
+---
 
-### 📱 **Performance Actual**
-- **Tiempo de carga**: < 2 segundos
-- **Compatibilidad móvil**: 95%
+## Características Actuales
+
+### **Diseño y UX (v1.0)**
+- **Interface moderna**: Glassmorphism y gradientes dinámicos
+- **Totalmente responsive**: Desde 320px hasta 4K
+- **Navegación fluida**: Smooth scrolling con scroll spy
+- **Mobile-first**: Optimizado primero para dispositivos móviles
+
+### **Funcionalidades Implementadas**
+- **Modal de Proyectos**: Slider touch-friendly con navegación por flechas
+- **Timeline Interactiva**: Filtros por categoría y detalles expandibles
+- **Validación de Email**: Sistema de validación de emails reales
+- **Envío Inteligente**: Detección automática del proveedor de correo
+- **Página de Herramientas**: Vista detallada de todas las competencias
+
+### **Performance Actual**
+- **Tiempo de carga**: Aproximadamente 2 segundos
+- **Compatibilidad móvil**: Buena compatibilidad en dispositivos principales
 - **Cross-browser**: Chrome, Firefox, Safari, Edge
-- **Accesibilidad**: WCAG AA con navegación por teclado
+- **Accesibilidad**: Navegación por teclado y estructura semántica
 
 ---
 
@@ -595,46 +599,247 @@ Breve descripción de los cambios realizados
 
 ---
 
-## 🔍 **Detalles Técnicos**
+## Sección de Aprendizaje
 
-### **Arquitectura Actual**
-- **Sin bundlers**: JavaScript vanilla para máxima compatibilidad
-- **CSS Custom Properties**: Variables nativas para theming
-- **Progressive Enhancement**: Funciona sin JavaScript
-- **Semantic HTML**: Estructura accesible y SEO-friendly
+### **Recursos para Next.js**
 
-### **Optimizaciones Implementadas**
-```javascript
-// Lazy loading de imágenes
-const observer = new IntersectionObserver(/* ... */);
+**Documentación y Guías:**
+- [Next.js Documentation](https://nextjs.org/docs) - Documentación oficial, muy completa
+- [React Documentation](https://react.dev/) - Fundamentos de React necesarios
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/) - Para el tipado
+- [Tailwind CSS Docs](https://tailwindcss.com/docs) - Framework CSS que planeo usar
 
-// Debouncing en búsquedas
-function debounce(func, wait) { /* ... */ }
+**Cursos y Tutoriales:**
+- [Next.js 14 Course - Code with Antonio](https://www.youtube.com/playlist?list=PLhjX8dThb7U8s_M3zFQc7vkgqI_1s1H-H) (YouTube)
+- [React Course - freeCodeCamp](https://www.freecodecamp.org/learn/front-end-development-libraries/) 
+- [JavaScript ES6+ Features](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - MDN
+- [Git & GitHub Learning Lab](https://lab.github.com/) - Para colaboración
 
-// Event delegation
-document.addEventListener('click', handleClickDelegation);
+**Proyectos de Práctica:**
+- Recrear componentes simples en React
+- Convertir páginas estáticas a Next.js
+- Implementar formularios con validación
+- Practicar con APIs públicas
 
-// Preconnect a recursos críticos
-<link rel="preconnect" href="https://fonts.googleapis.com">
+### **Progreso Actual en Tecnologías**
+
+**En Aprendizaje Activo:**
 ```
+JavaScript ES6+        [████████░░] 80% - Sólido, mejorando async/await
+React Basics           [█████░░░░░] 50% - Componentes, hooks básicos
+Next.js 14             [███░░░░░░░] 30% - App Router, routing básico
+TypeScript             [██░░░░░░░░] 20% - Sintaxis básica, tipos simples
+```
+
+**Próximos en la Lista:**
+```
+Tailwind CSS           [█░░░░░░░░░] 10% - Solo conceptos básicos
+Framer Motion          [░░░░░░░░░░] 0%  - Por aprender
+Zustand/Context        [░░░░░░░░░░] 0%  - State management
+```
+
+**Consolidados:**
+```
+HTML5/CSS3            [██████████] 95% - Muy sólido
+Automatización        [█████████░] 90% - n8n, Make, IFTTT
+Git/GitHub            [███████░░░] 70% - Workflows básicos
+```
+
+---
+
+## Setup para Desarrollo Local
+
+### **Prerrequisitos**
+```bash
+# Verificar versiones instaladas
+node --version    # Recomendado: v18.17.0 o superior
+npm --version     # Recomendado: v9.0.0 o superior
+git --version     # Cualquier versión reciente
+```
+
+### **Instalación Detallada**
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/Fink-web/portafolio.git
+cd portafolio
+
+# 2. Si usas VS Code, abrir el proyecto
+code .
+
+# 3. Para desarrollo con servidor local
+# Opción A: Python (si está instalado)
+python -m http.server 8000
+# Luego ir a: http://localhost:8000
+
+# Opción B: Node.js serve
+npx serve .
+# Luego ir a: http://localhost:3000
+
+# Opción C: Live Server (VS Code Extension)
+# Instalar Live Server extension
+# Right-click en index.html > "Open with Live Server"
+```
+
+### **Herramientas Recomendadas**
+
+**Editor:**
+- **VS Code** - Editor principal recomendado
+- **Sublime Text** - Alternativa ligera
+- **WebStorm** - Si prefieres IDEs completos
+
+**Navegadores para Testing:**
+- **Chrome** - DevTools excelentes
+- **Firefox** - Buen inspector de CSS
+- **Safari** (Mac) - Testing WebKit
+- **Edge** - Verificar compatibilidad
+
+**Herramientas de línea de comandos:**
+```bash
+# Para validar HTML
+npm install -g html-validate
+html-validate index.html
+
+# Para optimizar imágenes
+npm install -g imagemin-cli
+imagemin *.jpg --out-dir=optimized
+
+# Para análisis de performance
+npm install -g lighthouse
+lighthouse https://fink-web.github.io/portafolio
+```
+
+### **Extensions de VS Code Útiles**
+
+**Esenciales:**
+- **Live Server** - Servidor local con auto-reload
+- **Prettier** - Formateo automático de código
+- **Bracket Pair Colorizer** - Colores para brackets
+- **Auto Rename Tag** - Renombrar tags HTML automáticamente
+
+**HTML/CSS:**
+- **HTML CSS Support** - Autocompletado mejorado
+- **CSS Peek** - Ver definiciones CSS
+- **IntelliSense for CSS** - Mejor autocompletado
+
+**JavaScript:**
+- **ES6 Snippets** - Shortcuts para JavaScript moderno
+- **JavaScript (ES6) Snippets** - Más snippets útiles
+- **Quokka.js** - JavaScript playground inline
+
+**Git:**
+- **GitLens** - Información detallada de Git
+- **Git History** - Visualizar historial de commits
+
+**Productividad:**
+- **Path Intellisense** - Autocompletado de rutas de archivos
+- **TODO Highlight** - Resaltar comentarios TODO
+- **Bookmarks** - Marcar líneas importantes
+- **Thunder Client** - Testing de APIs (para v2.0)
+
+### **Configuración de VS Code**
+
+**Settings.json recomendado:**
+```json
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "files.autoSave": "onDelay",
+  "files.autoSaveDelay": 1000,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "liveServer.settings.donotVerifyTags": true,
+  "liveServer.settings.port": 3000
+}
+```
+
+**Snippets útiles** (File > Preferences > User Snippets > html.json):
+```json
+{
+  "Console Log": {
+    "prefix": "clog",
+    "body": [
+      "console.log('$1:', $1);"
+    ],
+    "description": "Console log with label"
+  },
+  "HTML5 Boilerplate": {
+    "prefix": "html5",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html lang=\"es\">",
+      "<head>",
+      "    <meta charset=\"UTF-8\">",
+      "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+      "    <title>$1</title>",
+      "</head>",
+      "<body>",
+      "    $2",
+      "</body>",
+      "</html>"
+    ]
+  }
+}
+```
+
+### **Workflow de Desarrollo Recomendado**
+
+1. **Crear rama para cambios**
+   ```bash
+   git checkout -b fix/nombre-descriptivo
+   ```
+
+2. **Desarrollo con Live Reload**
+   - Usar Live Server extension
+   - Tener DevTools abierto
+   - Probar en móvil usando device emulation
+
+3. **Testing básico**
+   - Chrome DevTools > Lighthouse
+   - Responsive design mode
+   - Probar formularios y navegación
+
+4. **Commit y push**
+   ```bash
+   git add .
+   git commit -m "Descripción clara del cambio"
+   git push origin fix/nombre-descriptivo
+   ```
+
+### **Problemas Comunes y Soluciones**
+
+**Live Server no funciona:**
+- Verificar que no haya otro servidor en el puerto
+- Reiniciar VS Code
+- Usar `npx serve .` como alternativa
+
+**CSS no se actualiza:**
+- Hard refresh (Ctrl+Shift+R)
+- Verificar cache del navegador
+- Comprobar ruta del archivo CSS
+
+**JavaScript no funciona:**
+- Abrir DevTools > Console
+- Verificar errores de sintaxis
+- Comprobar que los elementos existan antes de manipularlos
 
 ---
 
 ## 📞 **Contacto**
 
-### **Ariel Alejandro Fink**
+**Ariel Alejandro Fink**
 
-📧 **Email**: [afink6042@gmail.com](mailto:afink6042@gmail.com)  
-🔗 **LinkedIn**: [linkedin.com/in/ariel-fink](https://linkedin.com/in/ariel-fink)  
-🐙 **GitHub**: [github.com/Fink-web](https://github.com/Fink-web)  
-📱 **WhatsApp**: [+54 11 2641-7458](tel:+541126417458)  
-📍 **Ubicación**: Florencio Varela, Buenos Aires, Argentina  
+**Email**: [afink6042@gmail.com](mailto:afink6042@gmail.com)  
+**LinkedIn**: [linkedin.com/in/ariel-fink](https://linkedin.com/in/ariel-fink)  
+**GitHub**: [github.com/Fink-web](https://github.com/Fink-web)  
+**Ubicación**: Buenos Aires, Argentina
 
-### **Especialidades**
-- 🤖 **Automatización de Procesos** (n8n, Make, IFTTT)
-- 💻 **Desarrollo Web** (HTML5, CSS3, JavaScript)
-- 🧠 **IA y Prompt Engineering** (ChatGPT, Claude, Gemini)
-- 📊 **Gestión de Proyectos** (Trello, Notion, Google Workspace)
+**Especialidades**
+- Automatización de Procesos (n8n, Make, IFTTT)
+- Desarrollo Web (HTML5, CSS3, JavaScript)
+- IA y Prompt Engineering (ChatGPT, Claude, Gemini)
+- Gestión de Proyectos (Trello, Notion, Google Workspace)
 
 ---
 
